@@ -1,0 +1,263 @@
+@startuml
+
+skinparam shadowing false
+skinparam ClassFontColor 157a6e
+skinparam ClassFontSize 11
+skinparam ClassBackgroundColor eceff4
+skinparam ClassBorderColor 5e81ac
+skinparam ClassBorderThickness 1
+skinparam ClassHeaderBackgroundColor d8dee9
+skinparam ArrowColor d08770
+
+
+title __COMPANY's Class Diagram__\n
+
+  namespace com.company {
+    class com.company.Administrator {
+        + Administrator()
+        + addBranch()
+        + addBranchEmp()
+        + addTransportationPersonal()
+        + getBranch()
+        + getNoBranches()
+        + getNoTransportationPersonals()
+        + getTransportationPersonal()
+        + removeBranch()
+        + removeBranchEmp()
+        + removeTransportationPersonal()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.Branch {
+        - branchEmps : ArrayList<BranchEmployee>
+        - name : String
+        - shipments : ArrayList<Shipment>
+        + Branch()
+        + addBranchEmp()
+        + addShipment()
+        + getBranchEmp()
+        + getBranchEmps()
+        + getName()
+        + getNoBranchEmps()
+        + getNoShipments()
+        + getShipment()
+        + getShipments()
+        + removeBranchEmp()
+        + toString()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.BranchEmployee {
+        - name : String
+        - surname : String
+        + BranchEmployee()
+        + acceptShipmentFromCustomer()
+        + acceptShipmentFromCustomer()
+        + addShipmentInformation()
+        + addUser()
+        + getShipmentByTrackingNumber()
+        + getWorkingBranch()
+        + handToTransportationP()
+        + removeUser()
+        + toString()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.CargoCompany {
+        - administrators : ArrayList<Administrator>
+        - branches : ArrayList<Branch>
+        - transportationPersonals : ArrayList<TransportationPersonal>
+        - users : ArrayList<Customer>
+        + CargoCompany()
+        + addAdmin()
+        + addBranch()
+        + addTransportationPersonal()
+        + addUser()
+        + getBranch()
+        + getBranchByName()
+        + getBranchEmp()
+        + getNoAdmin()
+        + getNoBranches()
+        + getNoTransportationPersonals()
+        + getShipmentByTrackingNumber()
+        + getTransportationPersonal()
+        + getUserByNameSurname()
+        + getWorkerByUsername()
+        + listBranches()
+        + listBranchesEmps()
+        + listTransportationPersonals()
+        + removeBranch()
+        + removeBranchEmp()
+        + removeTransportationPersonal()
+        + removeUser()
+        + trackShipment()
+    }
+  }
+  
+
+  namespace com.company {
+    abstract class com.company.Customer {
+        - name : String
+        - surname : String
+        - trackingNumber : Integer
+        + Customer()
+        + getName()
+        + getSurname()
+        + setTrackingNumber()
+        + toString()
+    }
+  }
+  
+
+  namespace com.company {
+    interface com.company.Employee {
+        {abstract} + getEncryptedPassword()
+        {abstract} + getPosition()
+        {abstract} + getUserName()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.Main {
+        {static} + main()
+        {static} + mainMenu()
+        {static} - adminMenu()
+        {static} - branchEmpMenu()
+        {static} - getInput()
+        {static} - transportationPersonalMenu()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.Receiver {
+        - address : String
+        + Receiver()
+        + getAddress()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.Sender {
+        + Sender()
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.Shipment {
+        - acceptanceDate : Date
+        - infoMessage : String
+        {static} - trackingNoCounter : Integer
+        - trackingNumber : Integer
+        + Shipment()
+        + addInfoMessage()
+        + getAcceptanceDate()
+        + getCurrentBranch()
+        + getDestinationBranch()
+        + getInfoMessage()
+        + getResponsibleBranchEmp()
+        + getStatus()
+        + getTrackingNumber()
+        + getTransportationPersonal()
+        + setCurrentBranch()
+        + setDestinationBranch()
+        + setResponsibleBranchEmp()
+        + setResponsibleTransportationPersonal()
+        + setStatus()
+        + setStatus()
+        + shipmentInfo()
+        + toString()
+    }
+  }
+  
+
+  namespace com.company {
+    enum ShipmentStatus {
+      DELIVERED
+      DISTRIBUTION
+      IN_THE_BRANCH
+      ON_THE_WAY
+    }
+  }
+  
+
+  namespace com.company {
+    class com.company.TransportationPersonal {
+        - name : String
+        - shipments : ArrayList<Shipment>
+        - surname : String
+        + TransportationPersonal()
+        + addShipment()
+        + changeStatusToDelivered()
+        + getDestinationBranch()
+        + getNoShipment()
+        + getShipment()
+        + getShipments()
+        + handToBranch()
+        + listShipments()
+        + toString()
+    }
+  }
+  
+
+  namespace com.company {
+    abstract class com.company.Worker {
+        - encryptedPassword : String
+        - userName : String
+        + Worker()
+        {static} + getEncryptedPassword()
+        + getEncryptedPassword()
+        + getPosition()
+        + getUserName()
+    }
+  }
+  
+
+  namespace com.company {
+    enum Position {
+      ADMIN
+      BRANCH_EMP
+      TRANSPORTATION_PERSONAL
+    }
+  }
+  
+
+  com.company.Administrator -up-|> com.company.Worker
+  com.company.Administrator o-- com.company.CargoCompany : company
+  com.company.BranchEmployee -up-|> com.company.Worker
+  com.company.BranchEmployee o-- com.company.Branch : workingBranch
+  com.company.BranchEmployee o-- com.company.CargoCompany : workingCompany
+  com.company.Receiver -up-|> com.company.Customer
+  com.company.Sender -up-|> com.company.Customer
+  com.company.Shipment o-- com.company.Branch : currentBranch
+  com.company.Shipment o-- com.company.Branch : destinationBranch
+  com.company.Shipment o-- com.company.Receiver : receiver
+  com.company.Shipment o-- com.company.BranchEmployee : responsibleBranchEmp
+  com.company.Shipment o-- com.company.TransportationPersonal : responsibleTransportationPersonal
+  com.company.Shipment o-- com.company.Sender : sender
+  com.company.Shipment o-- com.company.Shipment.ShipmentStatus : status
+  com.company.Shipment +-down- com.company.Shipment.ShipmentStatus
+  com.company.TransportationPersonal -up-|> com.company.Worker
+  com.company.TransportationPersonal o-- com.company.Branch : destinationBranch
+  com.company.Worker .up.|> com.company.Employee
+  com.company.Worker o-- com.company.Worker.Position : position
+  com.company.Worker +-down- com.company.Worker.Position
+
+
+right footer
+
+
+PlantUML diagram generated by SketchIt! (https://bitbucket.org/pmesmeur/sketch.it)
+For more information about this tool, please contact philippe.mesmeur@gmail.com
+endfooter
+
+@enduml

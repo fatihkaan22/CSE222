@@ -1,0 +1,52 @@
+@startuml
+left to right direction
+
+:Transportation Personal: as transP
+:Branch Employee: as branchEmp
+:Administrator: as admin
+:Employee: as emp
+:Customer: as customer
+
+
+
+emp <|-- branchEmp
+emp <|-- admin
+emp <|-- transP
+
+rectangle "Cargo Automation System" {
+
+usecase handShip as "Hand the shipment
+--
+extension points:
+To branch
+To Customer
+"
+
+(Login) as (login)
+(New shipment) as (newShip)
+(Add employee) as (addEmp)
+
+emp -> (login)
+
+branchEmp -> newShip
+newShip .> (Add user) : include
+branchEmp -> (Add shipment)
+branchEmp -> (Add shipment information)
+branchEmp -> (Remove user)
+
+transP -> handShip
+handShip .> (Hand to branch) : extends
+handShip .> (Hand to branch employee) : extends
+
+
+admin -> addEmp
+addEmp .> (Add branch) : include
+admin -> (Remove employee)
+admin -> (Remove Branch)
+
+}
+
+
+'(Start) .. N2
+'N2 .. (Use)
+@enduml
