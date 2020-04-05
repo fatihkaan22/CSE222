@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e566477b-5add-4dc1-af0b-3bf127fdafe2" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DarkyenusTimeTracker">
+    <option name="totalTimeSeconds" value="82617" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1ZaqgOEIcsVmyJbrCkFAFLYnYoq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="create.test.in.the.same.root" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.company" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.LinkedArrayListTest">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.Main" />
+      <module name="CSE222-HW3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedArrayListTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSE222-HW3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company" />
+      <option name="MAIN_CLASS_NAME" value="com.company.LinkedArrayListTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedArrayListTest.addForIterator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSE222-HW3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company" />
+      <option name="MAIN_CLASS_NAME" value="com.company.LinkedArrayListTest" />
+      <option name="METHOD_NAME" value="addForIterator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedArrayListTest.next" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSE222-HW3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company" />
+      <option name="MAIN_CLASS_NAME" value="com.company.LinkedArrayListTest" />
+      <option name="METHOD_NAME" value="next" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LinkedArrayListTest.setForIterator" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CSE222-HW3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.company" />
+      <option name="MAIN_CLASS_NAME" value="com.company.LinkedArrayListTest" />
+      <option name="METHOD_NAME" value="setForIterator" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.LinkedArrayListTest" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.LinkedArrayListTest.addForIterator" />
+        <item itemvalue="JUnit.LinkedArrayListTest.setForIterator" />
+        <item itemvalue="JUnit.LinkedArrayListTest.next" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e566477b-5add-4dc1-af0b-3bf127fdafe2" name="Default Changelist" comment="" />
+      <created>1585087662737</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585087662737</updated>
+      <workItem from="1585087665826" duration="3246000" />
+      <workItem from="1585148814102" duration="66437000" />
+      <workItem from="1585430066507" duration="5843000" />
+      <workItem from="1585499961355" duration="1783000" />
+      <workItem from="1585519593070" duration="19825000" />
+      <workItem from="1585667367263" duration="1223000" />
+      <workItem from="1585699668490" duration="6386000" />
+      <workItem from="1585760705293" duration="1364000" />
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-1" y="0" width="1922" height="1081" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1585586377456">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-1" y="0" width="1922" height="1081" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585586377456" />
+    <state x="279" y="201" width="540" height="562" key="#com.intellij.ide.util.MemberChooser" timestamp="1585758869015">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="279" y="201" width="540" height="562" key="#com.intellij.ide.util.MemberChooser/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585758869015" />
+    <state x="666" y="32" width="578" height="971" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog" timestamp="1585263650964">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="666" y="32" width="578" height="971" key="#com.intellij.refactoring.encapsulateFields.EncalpsulateFieldsDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585263650964" />
+    <state x="198" y="210" width="540" height="552" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1585760147536">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="198" y="210" width="540" height="552" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585760147535" />
+    <state x="2126" y="242" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585430079759" />
+    <state x="256" y="264" width="452" height="528" key="FileChooserDialogImpl" timestamp="1585760952845">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="256" y="264" width="426" height="459" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585760952845" />
+    <state x="2176" y="264" width="452" height="528" key="FileChooserDialogImpl/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585609082027" />
+    <state width="1920" height="350" key="GridCell.Tab.0.bottom" timestamp="1585760621145">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="350" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585760621145" />
+    <state width="933" height="587" key="GridCell.Tab.0.bottom/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585612117568" />
+    <state width="1920" height="350" key="GridCell.Tab.0.center" timestamp="1585760621145">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="350" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585760621145" />
+    <state width="933" height="587" key="GridCell.Tab.0.center/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585612117567" />
+    <state width="1920" height="350" key="GridCell.Tab.0.left" timestamp="1585760621145">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="350" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585760621145" />
+    <state width="933" height="587" key="GridCell.Tab.0.left/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585612117560" />
+    <state width="1920" height="350" key="GridCell.Tab.0.right" timestamp="1585760621145">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="350" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585760621145" />
+    <state width="933" height="587" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585612117568" />
+    <state width="1920" height="372" key="GridCell.Tab.1.bottom" timestamp="1585429713698">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="372" key="GridCell.Tab.1.bottom/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585429713698" />
+    <state width="1920" height="372" key="GridCell.Tab.1.center" timestamp="1585429713697">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="372" key="GridCell.Tab.1.center/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585429713697" />
+    <state width="1920" height="372" key="GridCell.Tab.1.left" timestamp="1585429713697">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="372" key="GridCell.Tab.1.left/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585429713697" />
+    <state width="1920" height="372" key="GridCell.Tab.1.right" timestamp="1585429713697">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="1920" height="372" key="GridCell.Tab.1.right/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585429713697" />
+    <state x="2474" y="198" width="802" height="652" key="PlantUMLSettings" timestamp="1585608952014">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2474" y="198" width="802" height="652" key="PlantUMLSettings/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585608952014" />
+    <state x="1087" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1585148817315">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="1087" y="358" key="com.intellij.ide.util.TipDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585148817315" />
+    <state x="644" y="425" width="621" height="198" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1585583547675">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="644" y="425" width="621" height="198" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585583547675" />
+    <state x="731" y="174" width="444" height="684" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1585584337696">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="731" y="174" width="444" height="684" key="com.intellij.testIntegration.createTest.CreateTestDialog/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585584337696" />
+    <state width="600" height="440" key="javadoc.popup" timestamp="1585759660509">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state width="600" height="440" key="javadoc.popup/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585759660509" />
+    <state width="600" height="440" key="javadoc.popup/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585667382230" />
+    <state x="-2" y="105" width="1294" height="826" key="new project wizard" timestamp="1585762067790">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="-2" y="105" width="1294" height="826" key="new project wizard/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585762067790" />
+    <state x="623" y="252" key="run.anything.popup" timestamp="1585410215396">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="623" y="252" key="run.anything.popup/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585410215396" />
+    <state x="145" y="244" width="672" height="678" key="search.everywhere.popup" timestamp="1585761794690">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="145" y="244" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1585761794690" />
+    <state x="2065" y="244" width="672" height="678" key="search.everywhere.popup/1920.0.1920.1080/0.0.1920.1080@1920.0.1920.1080" timestamp="1585608955305" />
+  </component>
+</project>
