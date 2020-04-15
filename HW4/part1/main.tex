@@ -1,0 +1,1400 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{floatrow}
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage{courier}
+\usepackage{etoolbox}
+\usepackage[htt]{hyphenat}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{makecell}
+
+\title{\textbf{GIT Department Of Computer Engineering\\ 
+CSE 222/505 - Spring 2020\\
+Homework 4 Question 1 \vspace{1in}}}
+
+\author{\textbf{Fatih Kaan Salgır} \\ 
+\textbf{171044009}}
+
+\date{}
+
+\begin{document}
+
+\begin{large}
+
+  \maketitle
+
+  \newpage
+
+
+
+  \section{}
+
+  \subsection{Infix to Postfix}
+
+  \begin{enumerate}
+    \renewcommand{\arraystretch}{1.3}
+    \item
+          \textcolor{red}{A} + ((B - C * D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | } \\ \hline
+            \\ \hline \\ \hline \\ \hline \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+
+
+    \item
+          A \textcolor{red}{+} ((B - C * D) / E) + F - G / H\\
+          \\ \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline
+            \\ \hline
+            \\ \hline
+            + \\
+            \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          A + \textcolor{red}{(}(B - C * D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline
+            \\ \hline
+            ( \\ \hline
+            + \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          A + (\textcolor{red}{(}B - C * D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline
+            ( \\ \hline
+            ( \\ \hline
+            + \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          A + ((\textcolor{red}{B} - C * D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline
+            ( \\ \hline
+            ( \\
+            \hline
+            + \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B
+
+          \newpage
+
+    \item
+          A + ((B \textcolor{red}{-}  C * D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \makecell{-} \\ \hline
+            (            \\ \hline
+            (            \\ \hline
+            +            \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B
+    \item
+          A + ((B - \textcolor{red}{C} * D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \makecell{-} \\ \hline
+            (            \\ \hline
+            (            \\ \hline
+            +            \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C
+    \item
+          A + ((B - C \textcolor{red}{*} D) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{*} \\ \hline
+            \makecell{-} \\ \hline
+            (            \\ \hline
+            (            \\ \hline
+            +            \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C
+    \item
+          A + ((B - C * \textcolor{red}{D}) / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{*} \\ \hline
+            \makecell{-} \\ \hline
+            (            \\ \hline
+            (            \\ \hline
+            +            \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D
+    \item
+          A + ((B - C * D \textcolor{red}{)} / E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \\ \hline
+            (           \\ \hline
+            +           \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * -
+
+          \newpage
+    \item
+          A + ((B - C * D ) \textcolor{red}{/}  E) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{/} \\ \hline
+            (            \\ \hline
+            +            \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * -
+    \item
+          A + ((B - C * D ) / \textcolor{red}{E} ) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{/} \\ \hline
+            (            \\ \hline
+            +            \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E
+    \item
+          A + ((B - C * D ) / E \textcolor{red}{)} + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \\ \hline
+            +           \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E /
+    \item
+          A + ((B - C * D ) / E ) \textcolor{red}{+}  F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \\ \hline
+            +           \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / +
+    \item
+          A + ((B - C * D ) / E ) + \textcolor{red}{F} - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \\ \hline
+            +           \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / + F
+          \newpage
+    \item
+          A + ((B - C * D ) / E ) + F \textcolor{red}{-} G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \\ \hline
+            \makecell{-} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / + F +
+    \item
+          A + ((B - C * D ) / E ) + F - \textcolor{red}{G} / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \\ \hline
+            \makecell{-} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / + F + G
+    \item
+          A + ((B - C * D ) / E ) + F - G \textcolor{red}{/} H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{-} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / + F + G
+    \item
+          A + ((B - C * D ) / E ) + F - G / \textcolor{red}{H}\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{-} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / + F + G H
+    \item
+          A + ((B - C * D ) / E ) + F - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C D * - E / + F + G H / -
+  \end{enumerate}
+
+  \newpage
+
+  \subsection*{Evaluation}
+
+  Output of conversion: A B C D * - E / + F + G H / -\\
+  After values assigned: 3 4 1 2 * - 2 / + 5 + 6 3 / -
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{table}[htp]
+      \rowcolors{1}{black!5}{gray!5}
+      \begin{tabular}{ |m{2cm}|p{4cm}|p{5cm}| } \hline
+        \rowcolor{RoyalBlue!30}
+        \thead{Expression} & \thead{Stack} & \thead{Explantion}               \\ \hline
+        \makecell{3}       & 3             & Push operand            & \hline
+        \makecell{4}       & 3 4           & Push operand            & \hline
+        \makecell{1}       & 3 4 1         & Push operand            & \hline
+        \makecell{2}       & 3 4 1 2       & Push operand            & \hline
+        \makecell{*}       & 3 4           & $1 \times 2 = 2$        & \hline
+        \makecell{}        & 3 4 2         & Push calculation result & \hline
+        \makecell{-}       & 3             & $4 - 2 = 2$             & \hline
+        \makecell{}        & 3 2           & Push calculation result & \hline
+        \makecell{2}       & 3 2 2         & Push operand            & \hline
+        \makecell{/}       & 3             & $2 \div 2 = 1$          & \hline
+        \makecell{}        & 3 1           & Push calculation result & \hline
+        \makecell{+}       &               & $ 3+1  = 4$             & \hline
+        \makecell{}        & 4             & Push calculation result & \hline
+        \makecell{5}       & 4 5           & Push operand            & \hline
+        \makecell{+}       &               & $4 + 5=9$               & \hline
+        \makecell{}        & 9             & Push calculation result & \hline
+        \makecell{6}       & 9 6           & Push operand            & \hline
+        \makecell{3}       & 9 6 3         & Push operand            & \hline
+        \makecell{/}       &               & $6 \div 3=2$            & \hline
+        \makecell{}        & 9 2           & Push calculation result & \hline
+        \makecell{-}       & 9 2           & $9- 2 =7$               & \hline
+        \makecell{}        & 7             & Push calculation result & \hline
+      \end{tabular}
+    \end{table}
+  \end{center}
+
+
+  \newpage
+  \subsection{Infix to Prefix}
+
+  \begin{enumerate}
+    \renewcommand{\arraystretch}{1.3}
+    \item
+          A + ((B - C * D) / E) + F - G / \textcolor{red}{H}\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | } \\ \hline
+            \\ \hline \\ \hline \\ \hline \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H
+
+          \renewcommand{\arraystretch}{1.3}
+    \item
+          A + ((B - C * D) / E) + F - G  \textcolor{red}{/} H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline \\ \hline \\ \hline
+            \makecell{/} \\
+            \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H
+
+          \renewcommand{\arraystretch}{1.3}
+    \item
+          A + ((B - C * D) / E) + F - \textcolor{red}{G} / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline \\ \hline \\ \hline
+            \makecell{/} \\
+            \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G
+
+          \renewcommand{\arraystretch}{1.3}
+    \item
+          A + ((B - C * D) / E) + F \textcolor{red}{-} G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline \\ \hline \\ \hline
+            \makecell{-} \\
+            \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G /
+
+          \renewcommand{\arraystretch}{1.3}
+    \item
+          A + ((B - C * D) / E) + \textcolor{red}{F} - G / H\\
+          \\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \\ \hline \\ \hline \\ \hline
+            \makecell{-} \\
+            \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F
+
+          \newpage
+
+          \renewcommand{\arraystretch}{1.3}
+    \item
+          A + ((B - C * D) / E) \textcolor{red}{+} F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline \\ \hline \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B - C * D) / E \textcolor{red}{)} + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B - C * D) /  \textcolor{red}{E} ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B - C * D) \textcolor{red}{/} E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B - C * D \textcolor{red}{)} / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{)} \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E
+
+          \newpage
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B - C *  \textcolor{red}{D} ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{)} \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B - C  \textcolor{red}{*} D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{*} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B -   \textcolor{red}{C} * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{*} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((B \textcolor{red}{-} C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{-} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C *
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + ((\textcolor{red}{B} - C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{-} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C * B
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + (\textcolor{red}{(} B - C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{/} \\ \hline
+            \makecell{)} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C * B -
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + \textcolor{red}{(}( B - C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C * B - /
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A \textcolor{red}{+} (( B - C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{+} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C * B - /
+
+          \renewcommand{\arraystretch}{1.3} \item
+          \textcolor{red}{A} + (( B - C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{+} \\ \hline
+            \makecell{+} \\\hline
+            \makecell{-} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C * B - / A
+          \newpage
+
+          \renewcommand{\arraystretch}{1.3} \item
+          A + (( B - C * D ) / E ) + F - G / H\\\\
+          \begin{tabular}[t]{ | p{1em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\\hline
+            \makecell{} \\\hline
+          \end{tabular}
+          \hspace{2em}
+          Output: H G / F E D C * B - / A + + -
+
+  \end{enumerate}
+  After reversing we get;
+
+  Output:   - + + A / - B * C D E F / G H
+
+  \newpage
+
+  \subsection*{Evaluation}
+
+  Output: H G / F E D C * B - / A + + -\\
+  After values assigned: 3 6 / 5 2 2 1 * 4 - / 3 + + -
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{table}[htp]
+      \rowcolors{1}{black!5}{gray!5}
+      \begin{tabular}{ |m{2cm}|p{4cm}|p{5cm}| } \hline
+        \rowcolor{RoyalBlue!30}
+        \thead{Expression} & \thead{Stack after the step} & \thead{Explantion}          \\ \hline
+        \makecell{3}       & 3                            & Push operand       & \hline
+        \makecell{6}       & 3 6                          & Push operand       & \hline
+        \makecell{/}       & 2                            & $6\div3 = 2$       & \hline
+        \makecell{5}       & 2 5                          & Push operand       & \hline
+        \makecell{2}       & 2 5 2                        & Push operand       & \hline
+        \makecell{2}       & 2 5 2 2                      & Push operand       & \hline
+        \makecell{1}       & 2 5 2 2 1                    & Push operand       & \hline
+        \makecell{*}       & 2 5 2 2                      & $ 2\times 1 = 4 $  & \hline
+        \makecell{4}       & 2 5 2 2 4                    & Push operand       & \hline
+        \makecell{-}       & 2 5 2 2                      & $4 - 2 = 2$        & \hline
+        \makecell{/}       & 2 5 1                        & $2 \div 2 = 1$     & \hline
+        \makecell{3}       & 2 5 1 3                      & Push operand       & \hline
+        \makecell{+}       & 2 5 4                        & $4 + 1 = 4$        & \hline
+        \makecell{+}       & 2 9                          & $5+1=9$            & \hline
+        \makecell{-}       & 7                            & $9-2 = 7$          & \hline
+      \end{tabular}
+    \end{table}
+  \end{center}
+  \newpage
+
+  \section{}
+
+  \subsection{Infix to Postfix}
+
+  \begin{enumerate}
+    \renewcommand{\arraystretch}{1.3}
+    \item
+          \textcolor{red}{!} (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ } \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{!} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output:
+    \item
+          ! \textcolor{red}{(}A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ } \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{(} \\ \hline
+            \makecell{!} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output:
+    \item
+          ! (\textcolor{red}{A} \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ } \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{(} \\ \hline
+            \makecell{!} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          ! (A \textcolor{red}{\&\&} ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }       \\ \hline
+            \makecell{}        \\ \hline
+            \makecell{}        \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+          \newpage
+    \item
+          ! (A \&\& \textcolor{red}{!} ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }       \\ \hline
+            \makecell{}        \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          ! (A \&\& ! \textcolor{red}{(}(B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }       \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          ! (A \&\& ! (\textcolor{red}{(} B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{(}       \\ \hline \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A
+    \item
+          ! (A \&\& ! ((\textcolor{red}{B} $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{(}       \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B
+          \newpage
+    \item
+          ! (A \&\& ! (( B\textcolor{red}{$<$} C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{$<$}     \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline \makecell{!}       \\ \hline\end{tabular}
+          \hspace{2em}
+          Output: A B
+    \item
+          ! (A \&\& ! (( B $<$ \textcolor{red}{C} ) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{$<$}     \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C
+    \item
+          ! (A \&\& ! (( B $<$ C \textcolor{red}{)} $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}        \\ \hline
+            \makecell{}        \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$
+          \newpage
+    \item
+          ! (A \&\& ! (( B $<$ C ) \textcolor{red}{$||$} (C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}        \\ \hline
+            \makecell{$||$}    \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ \textcolor{red}{(} C $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{(}       \\ \hline
+            \makecell{$||$}    \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( \textcolor{red}{C} $>$ D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{(}       \\ \hline
+            \makecell{$||$}    \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C
+          \newpage
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C \textcolor{red}{$>$} D)))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{$>$}     \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{$||$}    \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ \textcolor{red}{D} )))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{$>$}     \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{$||$}    \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D \textcolor{red}{)}))\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}        \\ \hline
+            \makecell{}        \\ \hline
+            \makecell{$||$}    \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$
+          \newpage
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D )\textcolor{red}{)})\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}        \\ \hline
+            \makecell{}        \\ \hline
+            \makecell{}        \\ \hline
+            \makecell{!}       \\ \hline
+            \makecell[l]{\&\&} \\ \hline
+            \makecell{(}       \\ \hline
+            \makecell{!}       \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))\textcolor{red}{)}\ $||$ \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{!} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\&
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) \textcolor{red}{$||$}  \ (C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}     \\ \hline
+            \makecell{}     \\ \hline
+            \makecell{}     \\ \hline
+            \makecell{$||$} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& !
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ \textcolor{red}{(} C $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}     \\ \hline
+            \makecell{}     \\ \hline
+            \makecell{(}    \\ \hline
+            \makecell{$||$} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& !
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( \textcolor{red}{C}  $<$ E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}     \\ \hline
+            \makecell{}     \\ \hline
+            \makecell{(}    \\ \hline
+            \makecell{$||$} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& ! C
+          \newpage
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C \textcolor{red}{ $<$} E) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}     \\ \hline
+            \makecell{$<$}  \\ \hline
+            \makecell{(}    \\ \hline
+            \makecell{$||$} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& ! C
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ \textcolor{red}{E} ) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}     \\ \hline
+            \makecell{$<$}  \\ \hline
+            \makecell{(}    \\ \hline
+            \makecell{$||$} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& ! C E
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E \textcolor{red}{)} \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}     \\ \hline
+            \makecell{}     \\ \hline
+            \makecell{}     \\ \hline
+            \makecell{$||$} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& ! C E $<$
+    \item
+          ! (A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E ) \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: A B C $<$ C D $>$ $||$ ! \&\& ! C E $<$ $||$
+  \end{enumerate}
+
+  \newpage
+
+  \subsection*{Evaluation}
+
+  Output: A B C $<$ C D $>$ $||$ ! \&\& ! C E $<$ $||$\\
+  After values assigned: 1 2 3 $<$ 3 4 $>$ $||$ ! \&\& ! 3 5 $<$ $||$
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{table}[htp]
+      \rowcolors{1}{black!5}{gray!5}
+      \begin{tabular}{ |m{2cm}|p{4cm}|p{5cm}| } \hline
+        \rowcolor{RoyalBlue!30}
+        \thead{Expression} & \thead{Stack after the step} & \thead{Explantion}          \\ \hline
+        \makecell{1}       & 1                            & Push operand       & \hline
+        \makecell{2}       & 1 2                          & Push operand       & \hline
+        \makecell{3}       & 1 2 3                        & Push operand       & \hline
+        \makecell{$<$}     & 1 1                          & $2 < 3$ is true    & \hline
+        \makecell{3}       & 1 1 3                        & Push operand       & \hline
+        \makecell{4}       & 1 1 3 4                      & Push operand       & \hline
+        \makecell{$>$}     & 1 1 0                        & $3>4$ is false     & \hline
+        \makecell{$||$}    & 1 1                          & $1\ ||\ 0$ is 1    & \hline
+        \makecell{!}       & 1 0                          & !1 is 0            & \hline
+        \makecell{\&\&}    & 0                            & 1 \&\& 0 is 0      & \hline
+        \makecell{!}       & 1                            & !0 is 1            & \hline
+        \makecell{3}       & 1 3                          & Push operand       & \hline
+        \makecell{5}       & 1 3 5                        & Push operand       & \hline
+        \makecell{$<$}     & 1 1                          & $3 < 5$ is true    & \hline
+        \makecell{$||$}    & 1                            & $1\ ||\ 1$ is true & \hline
+      \end{tabular}
+    \end{table}
+  \end{center}
+  \newpage
+
+  \subsection{Infix to Prefix}
+  \begin{enumerate}
+    \renewcommand{\arraystretch}{1.3}
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ E\textcolor{red}{)} \\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ } \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{)} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output:
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C $<$ \textcolor{red}{E})\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ } \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{)} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (C  \textcolor{red}{$<$} E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }   \\ \hline
+            \makecell{}    \\ \hline
+            \makecell{}    \\ \hline
+            \makecell{}    \\ \hline
+            \makecell{$<$} \\ \hline
+            \makecell{)}   \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \ (  \textcolor{red}{C} $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }   \\ \hline
+            \makecell{}    \\ \hline
+            \makecell{}    \\ \hline
+            \makecell{}    \\ \hline
+            \makecell{$<$} \\ \hline
+            \makecell{)}   \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C
+
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ $||$ \   \textcolor{red}{(} C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ } \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+            \makecell{}  \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)))\ \ \textcolor{red}{ $||$ } ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D))\textcolor{red}{)}  $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$
+
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D)\textcolor{red}{)}) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ D\textcolor{red}{)})) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C $>$ \textcolor{red}{D} ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (C  \textcolor{red}{$>$} D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{$>$}    \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ (  \textcolor{red}{C} $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{$>$}    \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C
+    \item
+          ! (A \&\& ! ((B $<$ C) $||$ \ \textcolor{red}{(} C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$
+          \newpage
+    \item
+          ! (A \&\& ! ((B $<$ C) \textcolor{red}{ $||$} ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{$||$}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$
+    \item
+          ! (A \&\& ! ((B $<$ C \textcolor{red}{ )} $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{$||$}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$
+    \item
+          ! (A \&\& ! ((B $<$  \textcolor{red}{C} ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{ }      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{$||$}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C
+    \item
+          ! (A \&\& ! ((B   \textcolor{red}{$<$} C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{$<$}    \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{$||$}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C
+          \newpage
+    \item
+          ! (A \&\& ! (( \textcolor{red}{B} $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{$<$}    \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{$||$}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B
+
+    \item
+          ! (A \&\& ! ( \textcolor{red}{(} B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{$||$}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$
+    \item
+          ! (A \&\& !  \textcolor{red}{(}( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$
+    \item
+          ! (A \&\& \textcolor{red}{!} (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{!}      \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$
+          \newpage
+    \item
+          ! (A  \textcolor{red}{\&\&} ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{\&\&}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$ !
+    \item
+          ! (  \textcolor{red}{A} \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{\&\&}   \\ \hline
+            \makecell{)}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$ ! A
+    \item
+          ! \textcolor{red}{(} A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$ ! A \&\&
+    \item
+          \textcolor{red}{!} ( A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{}       \\ \hline
+            \makecell{!}      \\ \hline
+            \makecell{ $||$ } \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$ ! A \&\&
+          \newpage
+    \item
+          ! ( A \&\& ! (( B $<$ C ) $||$ ( C $>$ D ))) $||$ ( C $<$ E)\\
+          \\
+          \begin{tabular}[t]{ | p{1.6em} | }
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+            \makecell{} \\ \hline
+          \end{tabular}
+          \hspace{2em}
+          Output: E C $<$ D C $>$ C B $<$ $||$ ! A \&\& !  $||$
+
+  \end{enumerate}
+  After reversing we get;
+
+  Output: $||$ ! \&\& A ! $||$ $<$ B C $>$ C D $<$ C E
+
+  \newpage
+  \subsection*{Evaluation}
+
+  Output: E C $<$ D C $>$ C B $<$ $||$ ! A \&\& !  $||$\\
+  After values assigned: 5 3 $<$ 4 3 $>$ 3 2 $<$ $||$ ! 1 \&\& !  $||$
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.2}
+    \begin{table}[htp]
+      \rowcolors{1}{black!5}{gray!5}
+      \begin{tabular}{ |m{2cm}|p{4cm}|p{5cm}| } \hline
+        \rowcolor{RoyalBlue!30}
+        \thead{Expression} & \thead{Stack after the step} & \thead{Explantion}          \\ \hline
+        \makecell{5}       & 5                            & Push operand       & \hline
+        \makecell{3}       & 5 3                          & Push operand       & \hline
+        \makecell{$<$}     & 1                            & $3 < 5$ is true    & \hline
+        \makecell{4}       & 1 4                          & Push operand       & \hline
+        \makecell{3}       & 1 4 3                        & Push operand       & \hline
+        \makecell{$>$}     & 1 0                          & $3 > 4$ is false   & \hline
+        \makecell{3}       & 1 0 3                        & Push operand       & \hline
+        \makecell{2}       & 1 0 3 2                      & Push operand       & \hline
+        \makecell{$<$}     & 1 0 1                        & $2 < 3$ is true    & \hline
+        \makecell{$||$}    & 1 1                          & $0\ ||\ 1$ is true & \hline
+        \makecell{!}       & 1 0                          & !1 is 0            & \hline
+        \makecell{1}       & 1 0 1                        & Push operand       & \hline
+        \makecell{\&\&}    & 1 0                          & 0 \&\& 1 is false  & \hline
+        \makecell{!}       & 1 1                          & !0 is 1            & \hline
+        \makecell{$||$}    & 1                            & $1\ ||\ 1$ is true & \hline
+      \end{tabular}
+    \end{table}
+  \end{center}
+  \newpage
+
+\end{large}
+\end{document}
+???
+???
+???
+???
+???
+???
+???
+???
+???
+???
