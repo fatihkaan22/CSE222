@@ -1,0 +1,252 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {imgs/} {tables/} }
+\usepackage{floatrow}
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage{courier}
+\usepackage{etoolbox}
+\usepackage[htt]{hyphenat}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{listings}
+\usepackage{makecell}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tabulary}
+\usepackage{multicol}
+
+\setlength{\columnsep}{2em}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+
+\newenvironment{mono}{\fontfamily{pcr}\selectfont}{\par}
+
+\renewcommand\theadalign{bc}
+\renewcommand\theadfont{\bfseries}
+\renewcommand\theadgape{\Gape[4pt]}
+\renewcommand\cellgape{\Gape[4pt]}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+\title{\textbf{GIT Department Of Computer Engineering\\ 
+CSE 222/505 - Spring 2020\\
+Homework 7 Report \vspace{1in}}}
+
+\author{\textbf{Fatih Kaan Salgır} \\ 
+\textbf{171044009}}
+
+\date{}
+
+\begin{document}
+
+\begin{large}
+
+  \maketitle
+
+  \newpage
+
+  \begin{center}
+    \textbf{ \\
+      \vspace{3cm}
+      \Huge{PART 4}
+    }
+  \end{center}
+
+  \newpage
+
+  \section{Problem Solution Approach}
+
+  I have started by creating necessary classes. I have decided to store admins and softwares in a class called \texttt{SoftwareSystem}. The type of data structure to store software is \texttt{SearchTree} interface. I have used \texttt{BinarySearchTree} class from book, although any tree structure implements \texttt{SearchTree} interface can be used. I have implemented the menu in the \texttt{Main} class.
+  \vspace{1em}
+
+  The program should support searching with different criteria. One way doing this was creating 3 different tree but in this case, when removing or adding a new element; changes must be applied all of the trees. Therefore I came up with another idea. I have created \texttt{SoftwareNode} class which has a key, the type of the key and reference to information of actual \texttt{Software} object. Type of \textsl{key} is generic. Therefore I can add three nodes for every software with specific keys: name, price and quantity. Since there are 3 search criteria with different types, I have overloaded \texttt{softwareSearch()} method so that it can work with different types. For this type of entities of software, I don't need the specify criteria, since they all have different data types. However, I thought its better to use enum type criteria, because of extensibility of the program.
+
+  \vspace{1em}
+
+  For error handling, I consider the situation where user put unmatched search criteria. In this case it throws \texttt{IllegalArguementException()}. In menu part I haven't checked if the user put unmatched data type, since Java already handles, and throw exceptions in this case. However I have checked if software exist for \texttt{removeSoftware()} and \texttt{updateSoftwareInfo()} methods.
+
+
+  \vspace{1em}
+
+
+  \newpage
+
+  \section{Class Diagrams}
+
+  \begin{figure}[htp]
+    \centering
+    \includegraphics[width=0.75\textwidth]{class-diagram}
+  \end{figure}
+
+  \newpage
+
+  \section{Test Cases}
+
+  I have created some text cases for some adding and removing operations which is present on my main method as commented out.
+
+  \begin{figure}[htp]
+    \centering
+    \hspace*{-2cm}
+    \includegraphics[width=1.25\textwidth]{test}
+  \end{figure}
+
+  \section{Running and Results}
+
+  \begin{lstlisting}[language=Java, caption=Testing methods in main method]
+
+main.sys = new SoftwareSystem("pass");
+main.sys.addSoftware(new Software("Adobe Photoshop 6.0", 3, 200.0));
+main.sys.addSoftware(new Software("Adobe Photoshop 6.2", 2, 300.0));
+main.sys.addSoftware(new Software("Norton 4.5", 1, 100.0));
+main.sys.addSoftware(new Software("Norton 5.5", 3, 150.0));
+main.sys.addSoftware(new Software("Adobe Flash 3.3", 7, 80.0));
+main.sys.addSoftware(new Software("Adobe Flash 4.0", 3, 90.0));
+
+main.sys.addAdmin("123");
+
+System.out.println("T1");
+System.out.println(main.sys.softwareTree);
+
+System.out.println("T2");
+System.out.println(main.sys.searchSoftware(SoftwareNode.KeyType.NAME, "Adobe Photoshop 6.0"));
+System.out.println("T3");
+System.out.println(main.sys.searchSoftware(SoftwareNode.KeyType.QUANTITY, 1));
+System.out.println("T4");
+System.out.println(main.sys.searchSoftware(SoftwareNode.KeyType.PRICE, 90.0));
+System.out.println("T5");
+Software software = main.sys.searchSoftware(SoftwareNode.KeyType.PRICE, 90.0);
+System.out.println(main.sys.soldSoftware(software.name));
+System.out.println(main.sys.softwareTree); System.out.println("T6");
+System.out.println(main.sys.deleteSoftware(software));
+System.out.println(main.sys.softwareTree);
+System.out.println("T7");
+main.sys.updateSoftwareInfo(software, new Software("updated", 12, 1.23));
+System.out.println(main.sys.softwareTree);
+
+
+  \end{lstlisting}
+
+  \newpage
+
+  Output of the test cases;
+
+  \begin{lstlisting}
+  T1
+{key=300.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=200.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=150.0, searchCriteria=PRICE, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=100.0, searchCriteria=PRICE, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=90.0, searchCriteria=PRICE, software={name='Adobe Flash 4.0', quantity=3, price=90.0}}
+{key=80.0, searchCriteria=PRICE, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=7, searchCriteria=QUANTITY, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Adobe Flash 4.0', quantity=3, price=90.0}}
+{key=2, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=1, searchCriteria=QUANTITY, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Norton 5.5, searchCriteria=NAME, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=Norton 4.5, searchCriteria=NAME, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Adobe Photoshop 6.2, searchCriteria=NAME, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=Adobe Photoshop 6.0, searchCriteria=NAME, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=Adobe Flash 4.0, searchCriteria=NAME, software={name='Adobe Flash 4.0', quantity=3, price=90.0}}
+{key=Adobe Flash 3.3, searchCriteria=NAME, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+
+T2
+{name='Adobe Photoshop 6.0', quantity=3, price=200.0}
+T3
+{name='Norton 4.5', quantity=1, price=100.0}
+T4
+{name='Adobe Flash 4.0', quantity=3, price=90.0}
+T5
+{name='Adobe Flash 4.0', quantity=2, price=90.0}
+{key=300.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=200.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=150.0, searchCriteria=PRICE, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=100.0, searchCriteria=PRICE, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=90.0, searchCriteria=PRICE, software={name='Adobe Flash 4.0', quantity=2, price=90.0}}
+{key=80.0, searchCriteria=PRICE, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=7, searchCriteria=QUANTITY, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=2, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=2, searchCriteria=QUANTITY, software={name='Adobe Flash 4.0', quantity=2, price=90.0}}
+{key=1, searchCriteria=QUANTITY, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Norton 5.5, searchCriteria=NAME, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=Norton 4.5, searchCriteria=NAME, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Adobe Photoshop 6.2, searchCriteria=NAME, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=Adobe Photoshop 6.0, searchCriteria=NAME, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=Adobe Flash 4.0, searchCriteria=NAME, software={name='Adobe Flash 4.0', quantity=2, price=90.0}}
+{key=Adobe Flash 3.3, searchCriteria=NAME, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+
+T6
+true
+{key=300.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=200.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=150.0, searchCriteria=PRICE, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=100.0, searchCriteria=PRICE, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=80.0, searchCriteria=PRICE, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=7, searchCriteria=QUANTITY, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=2, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=1, searchCriteria=QUANTITY, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Norton 5.5, searchCriteria=NAME, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=Norton 4.5, searchCriteria=NAME, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Adobe Photoshop 6.2, searchCriteria=NAME, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=Adobe Photoshop 6.0, searchCriteria=NAME, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=Adobe Flash 3.3, searchCriteria=NAME, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+
+T7
+{key=300.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=200.0, searchCriteria=PRICE, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=150.0, searchCriteria=PRICE, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=100.0, searchCriteria=PRICE, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=80.0, searchCriteria=PRICE, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=1.23, searchCriteria=PRICE, software={name='updated', quantity=12, price=1.23}}
+{key=12, searchCriteria=QUANTITY, software={name='updated', quantity=12, price=1.23}}
+{key=7, searchCriteria=QUANTITY, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=3, searchCriteria=QUANTITY, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=2, searchCriteria=QUANTITY, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=1, searchCriteria=QUANTITY, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=updated, searchCriteria=NAME, software={name='updated', quantity=12, price=1.23}}
+{key=Norton 5.5, searchCriteria=NAME, software={name='Norton 5.5', quantity=3, price=150.0}}
+{key=Norton 4.5, searchCriteria=NAME, software={name='Norton 4.5', quantity=1, price=100.0}}
+{key=Adobe Photoshop 6.2, searchCriteria=NAME, software={name='Adobe Photoshop 6.2', quantity=2, price=300.0}}
+{key=Adobe Photoshop 6.0, searchCriteria=NAME, software={name='Adobe Photoshop 6.0', quantity=3, price=200.0}}
+{key=Adobe Flash 3.3, searchCriteria=NAME, software={name='Adobe Flash 3.3', quantity=7, price=80.0}}  
+  \end{lstlisting}
+  
+
+\end{large}
+\end{document}

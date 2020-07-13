@@ -1,0 +1,13 @@
+digraph skip {
+	rankdir=LR;
+	nodesep=0
+	node [shape=record, weight=4]
+
+	H [label="Head|<0>|<1>"]
+
+	40 [label="40|<0>|<1>"]
+	9 [label="9|<0>|<1>"]
+
+	H:0->9:0->40:0
+	H:1->9:1->40:1
+}

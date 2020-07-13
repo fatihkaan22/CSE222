@@ -1,0 +1,11 @@
+digraph {
+node[shape=circle dir=none]
+edge[dir=none]
+2->6
+2->5
+2->3
+2->1
+
+5->4
+5->0
+}

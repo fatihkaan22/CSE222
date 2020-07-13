@@ -1,0 +1,51 @@
+digraph BST {
+  node [fontname="Arial", shape=circle, fixedsize=true];
+  18 [fillcolor=grey60 style=filled]
+  9 [fillcolor=grey60 style=filled]
+  18 -> 9;
+  9 [fillcolor=grey60 style=filled]
+  8 [fillcolor=lightcoral style=filled]
+  9 -> 8;
+  null0 [ label="X", style="invis"];
+  8 [ fillcolor = lightcoral style=filled];
+  8 -> null0[ style=invis ];
+  null1 [ label="X", style="invis"];
+  8 [ fillcolor = lightcoral style=filled];
+  8 -> null1[ style=invis ];
+  9 [fillcolor=grey60 style=filled]
+  /* 18 [fillcolor=lightcoral style=filled]; */
+  null2 [ label="X", style="invis"];
+  9 -> null2 [ style=invis ];
+  /* 18 [ fillcolor = lightcoral style=filled]; */
+  /* 18 -> null2[ style=invis ]; */
+  /* null3 [ label="X", style="invis"]; */
+  /* 18 [ fillcolor = lightcoral style=filled]; */
+  /* 18 -> null3[ style=invis ]; */
+  18 [fillcolor=grey60 style=filled]
+  39 [fillcolor=lightcoral style=filled];
+  18 -> 39;
+  39 [fillcolor=lightcoral style=filled]
+  30 [fillcolor=grey60 style=filled]
+  39 -> 30;
+  null4 [ label="X", style="invis"];
+  30 [ fillcolor = grey60 style=filled];
+  30 -> null4[ style=invis ];
+  null5 [ label="X", style="invis"];
+  30 [ fillcolor = grey60 style=filled];
+  30 -> null5[ style=invis ];
+  39 [fillcolor=lightcoral style=filled]
+  47 [fillcolor=grey60 style=filled];
+  39 -> 47;
+  47 [fillcolor=grey60 style=filled]
+  40 [fillcolor=lightcoral style=filled]
+  47 -> 40;
+  null6 [ label="X", style="invis"];
+  40 [ fillcolor = lightcoral style=filled];
+  40 -> null6[ style=invis ];
+  null7 [ label="X", style="invis"];
+  40 [ fillcolor = lightcoral style=filled];
+  40 -> null7[ style=invis ];
+  null8 [ label="X", style="invis"];
+  47 [ fillcolor = grey60 style=filled];
+  47 -> null8[ style=invis ];
+}

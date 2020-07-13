@@ -1,0 +1,260 @@
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {imgs/} }
+% \usepackage{floatrow}
+% \usepackage{array}
+\usepackage[margin=2cm]{geometry}
+% \usepackage{courier}
+% \usepackage{etoolbox}
+% \usepackage[htt]{hyphenat}
+% \usepackage[dvipsnames,table]{xcolor}
+% \usepackage{listings}
+% \usepackage{makecell}
+% \usepackage{hyperref}
+% \usepackage{booktabs}
+\usepackage{float}
+% \usepackage{tabularx}
+% \usepackage{tabulary}
+% \usepackage{multicol}
+
+\setlength{\columnsep}{2em}
+
+\newcommand{\image}[2] {
+  % \vspace{5pt}
+  % \hline
+  % \vspace{5pt}
+  \noindent\begin{minipage}[c]{.6\textwidth}% adapt widths of minipages to your needs
+    \centering
+    \strut\vspace*{-\baselineskip}\newline\includegraphics[scale=.3]{#1}
+  \end{minipage}%
+  \hfill%
+  \begin{minipage}[c]{.4\textwidth}
+    #2
+  \end{minipage}
+}
+
+\title{\textbf{GIT Department Of Computer Engineering\\ 
+CSE 222/505 - Spring 2020\\
+Homework 7 Part 1 \vspace{1in}}}
+
+\author{\textbf{Fatih Kaan Salgır} \\ 
+\textbf{171044009}}
+
+\date{}
+
+\begin{document}
+
+  \maketitle
+
+  \newpage
+  
+  \section{AVL Tree}
+  \subsection{Adding}
+
+  \image{avl/add/0.png}{Adding first node}
+  \vspace{1em}
+
+  \image{avl/add/1.png}{30 is greater than 20, add to right}
+  \image{avl/add/2.png}{8 is less than 20, add to left}
+  \image{avl/add/3.png}{47, is greater than 20 and 30, add to right of 30}
+  \image{avl/add/4.png}{39, greater than 20 added to left of 47 \\ Rotation needed}
+  \image{avl/add/5.png}{Right-left rotation performed on right sub-tree}
+  \image{avl/add/6.png}{18 is less than 20, grater than 8, added right of 8}
+  \image{avl/add/7.png}{40 is greater than 20 and 39, less than 47, added left of 40}
+  \image{avl/add/8.png}{9 is less than 20, greater than 8, less than 18, added left of 18\\Rotation needed}
+  \image{avl/add/9.png}{Right-left rotation performed on left sub-tree}
+
+
+  \subsection{Removing}
+
+  \image{avl/delete/0.png}{20 is to be removed, has two children, inorder successor is 30\\ Left-right rotation performed to balance left sub-tree.}
+  \image{avl/delete/2.png}{30 is to be removed, has two children, inorder successor is 39 \\ Left-left rotation performed to balance left sub-tree.}
+  \image{avl/delete/4.png}{8 is to be removed, has no children, rotation not needed.}
+  \image{avl/delete/5.png}{47 is to be removed, has no children, rotation not needed.}
+  \image{avl/delete/6.png}{39 is to be removed, has two children, inorder successor is 40, rotation not needed.}
+  \image{avl/delete/8.png}{18 is to be removed, has two children, inorder successor is 40, rotation needed.}
+  \image{avl/delete/9.png}{Left-right rotation performed.}
+  \image{avl/delete/11.png}{40 is to be removed, has one children, left node will be the new root.}
+  \image{avl/delete/12.png}{9 is to be removed, has no children.}
+
+  \newpage
+
+  \section{Red-Black Tree}
+  \subsection{Adding}
+
+  \image{rb/add/0.png}{Adding first node as black.}
+  \image{rb/add/1.png}{30 is greater than 20 added to right, parent is black, done.}
+  \image{rb/add/2.png}{8 is less than 20, added to left, parent is black, done.}
+  \image{rb/add/3.png}{47 is to be added, since red node cannot have a red child:
+    \\Color of parent (30) and parent's sibling (8) changed to black.
+    \\ Grandparent's (20) color changed to red.}
+  \image{rb/add/4.png}{47 can be added now, but root must be black.}
+  \image{rb/add/5.png}{Color of root node changed to black.}
+  \image{rb/add/6.png}{39 is to be added, BST insertion performed, but red node cannot have red child. Double rotation needed}
+  \image{rb/add/7.png}{First rotation is performed between 47 and 39, color of 39 changed to black.}
+  \image{rb/add/8.png}{Second rotation is performed on right sub-tree.}
+  \image{rb/add/9.png}{18 is to be added, BST insertion, no violation}
+  \image{rb/add/10.png}{40 is to be added, but red node cannot have a red child:
+    \\Color of parent (47) and parent's sibling (30) changed to black.}
+  \image{rb/add/11.png}{40 can be added now, BST insertion performed.}
+  \image{rb/add/12.png}{9 is to be added, BST insertion performed, it violets the rule: red node can only have black child. Double rotation needed.}
+  \image{rb/add/13.png}{First rotation performed between 9 and 18. Color of 9 changed to black.}
+  \image{rb/add/14.png}{Second rotation performed on left sub-tree.}
+  
+  \subsection{Removing}
+
+  \image{rb/del/0.png}{20 is to be removed, inorder predecessor is 18, 18 will take place of 20, color of 18 changed to black to not to violate the rule: Root node must be black.}
+  \image{rb/del/1.png}{30 is to be removed, BST removal performed.}
+  \image{rb/del/2.png}{Rotation needed on right sub-tree. 40 will be parent of 39 and 47.}
+  \image{rb/del/3.png}{Rotation preformed, but red node cannot have a red child.}
+  \image{rb/del/4.png}{Color of 39 changed to black.}
+  \image{rb/del/4.png}{8 is to be removed.}
+  \image{rb/del/5.png}{BST removal of 8, it is red node, done.}
+  \image{rb/del/5.png}{47 is to be removed.}
+  \image{rb/del/6.png}{BST removal of 47. Colors need to be swapped.}
+  \image{rb/del/7.png}{Color of 40 set to black, color of 39 set to red.}
+  \image{rb/del/7.png}{39 is to be removed.}
+  \image{rb/del/8.png}{BST removal of 39, it is red node, done.}
+  \image{rb/del/8.png}{18 is to be removed. Predecessor is 9.}
+  \image{rb/del/9.png}{9 took place of 18. Since there is only one child, it must be red.}
+  \image{rb/del/10.png}{Color of 40 changed to red.}
+  \image{rb/del/10.png}{40 is to be removed.}
+  \image{rb/del/11.png}{BST removal of 40, it is red node, done.}
+  \image{rb/del/11.png}{9 is to be removed. Deletion of root node will be performed.}
+
+  \newpage
+  \section{2-3 Tree}
+
+  \subsection{Adding}
+  \image{2-3/add/0.png}{Addition of first node.}
+  \vspace{2em}
+
+  \image{2-3/add/1.png}{30 is to be added, 30 is greater than 20, added to same node.}
+  \vspace{2em}
+
+  \image{2-3/add/2.png}{8 is to be added, virtually added to node. Need rearrangement.}
+  \vspace{2em}
+
+  \image{2-3/add/3.png}{Root node seperated.}
+  \vspace{2em}
+
+  \image{2-3/add/4.png}{47 is to be added, greater than 20, greater than 30, added the same node as 30.}
+  \vspace{2em}
+
+  \image{2-3/add/5.png}{39 is to be added, greater than 20, virtually added between 30 and 47. Need rearrangement.}
+  \vspace{2em}
+
+  \image{2-3/add/6.png}{39 moved to parent node.}
+  \vspace{2em}
+
+  \image{2-3/add/7.png}{18 is to be added, less than 20, added the same node as 18.}
+  \vspace{2em}
+
+  \image{2-3/add/8.png}{40 is to be added, greater than 20 and 39. Added as the same node as 47.}
+  \vspace{2em}
+
+  \image{2-3/add/9.png}{9 is to be added, less than 20 and 39. Virutally added as the same node as 8 and 18.}
+  \vspace{2em}
+
+  \image{2-3/add/10.png}{9 is moved to parent node, but parent node has 3 elements now. Need rearrangement.}
+  \vspace{2em}
+
+  \image{2-3/add/11.png}{Root node seperated}
+
+  \subsection{Removing}
+
+  \image{2-3/del/0.png}{20 is to be removed, predecessor is 18.}
+  \vspace{2em}
+
+  \image{2-3/del/1.png}{18 took place of 20.}
+  \vspace{2em}
+
+  \image{2-3/del/2.png}{9 moved to child node.}
+  \vspace{2em}
+
+  \image{2-3/del/3.png}{8 and 9 merged.}
+  \vspace{2em}
+
+  \image{2-3/del/4.png}{18 moved to child node, and merged with 39.}
+  \vspace{2em}
+
+  \image{2-3/del/5.png}{30 is removed, 18 moved to middle child, 9 moved to parent node.}
+  \vspace{2em}
+
+  \image{2-3/del/6.png}{8 is removed, 9 is moved to left child, left child and middle child merged.}
+  \vspace{2em}
+
+  \image{2-3/del/7.png}{47 is removed.}
+  \vspace{2em}
+
+  \image{2-3/del/8.png}{39 is removed. 18 moved to parent node.}
+  \vspace{2em}
+
+  \image{2-3/del/9.png}{18 is removed, 9 and 40 merged.}
+  \vspace{2em}
+
+  \image{2-3/del/10.png}{40 is removed.}
+  
+  \newpage
+  \section{Skip List}
+
+  \subsection{Adding}
+
+  \image{skip/add/0.png}{20 is to be added.}\vspace{2em}\\
+  \image{skip/add/1.png}{30 is to be added. (1. level)}\vspace{2em}\\
+  \image{skip/add/2.png}{8 is to be added. (2.level)}\vspace{2em}\\
+  \image{skip/add/3.png}{47 is to be added. (2. level) }\vspace{2em}\\
+  \image{skip/add/4.png}{39 is to be added. (2. level) }\vspace{2em}\\
+  \image{skip/add/5.png}{18 is to be added. (2. level) }\vspace{2em}\\
+  \image{skip/add/5-1.png}{40 is to be added. (3. level) }\vspace{2em}\\
+  \image{skip/add/6.png}{9 is to be added. (3.level)}\vspace{2em}\\
+  \image{skip/add/7.png}{ }\vspace{2em}\\
+
+  \subsection{Removing}
+  
+  \image{skip/del/0.png}{}\vspace{2em}\\
+  \image{skip/del/1.png}{\hspace{1em}20 is removed.}\vspace{2em}\\
+  \image{skip/del/2.png}{30 is removed.}\vspace{2em}\\
+  \image{skip/del/3.png}{8 is removed.}\vspace{2em}\\
+  \image{skip/del/4.png}{47 is removed. }\vspace{2em}\\
+  \image{skip/del/5.png}{39 is removed }\vspace{2em}\\
+  \image{skip/del/6.png}{18 is removed. }\vspace{2em}\\
+  \image{skip/del/7.png}{Level 3 is not needed, removed. }\vspace{2em}\\
+  \image{skip/del/8.png}{ Level 2 is not needed, removed. }\vspace{2em}\\
+  \image{skip/del/9.png}{40 is removed }\vspace{2em}\\
+  \image{skip/del/10.png}{9 is removed. }\vspace{2em}\\
+  
+
+  \newpage
+  \section{B-Tree with order 4}
+
+  \subsection{Adding}
+
+  \image{b/add/0.png}{20 is added.}\vspace{2em}\\
+  \image{b/add/1.png}{30 is greater than 20, added right of 20.}\vspace{2em}\\
+  \image{b/add/2.png}{8, is less than 20, added left of 20.}\vspace{2em}\\
+  \image{b/add/3.png}{47, is added the root node virtually.}\vspace{2em}\\
+  \image{b/add/4.png}{Nodes are seperated.}\vspace{2em}\\
+  \image{b/add/5.png}{39, is greater than 20, added to right child of 20.}\vspace{2em}\\
+  \image{b/add/6.png}{18, is less than 20, added to left child of 20. }\vspace{2em}\\
+  \image{b/add/7.png}{40, is greater than 20, added to left child of 20. }\vspace{2em}\\
+  \image{b/add/8.png}{Nodes are seperated.}\vspace{2em}\\
+  \image{b/add/9.png}{9, is less than 20, added to left child. }\vspace{2em}\\
+
+  \newpage
+  \subsection{Removing}
+
+  \image{b/del/0.png}{20 is to be removed, inorder predecessor is 18.}\vspace{2em}\\
+  \image{b/del/1.png}{18 took place of 20.}\vspace{2em}\\
+  \image{b/del/2.png}{30 is removed, 18 moved to middle child. 9 moved to parent.}\vspace{2em}\\
+  \image{b/del/3.png}{8 is removed, 18 is merged with left sibiling. 9 is moved to left child.}\vspace{2em}\\
+  \image{b/del/4.png}{47 is removed.}\vspace{2em}\\
+  \image{b/del/5.png}{39 is removed, 18 moved to parent.}\vspace{2em}\\
+  \image{b/del/6.png}{18 is removed, 9 and 40 merged together.}\vspace{2em}\\
+  \image{b/del/7.png}{40 is removed.}\vspace{2em}\\
+
+\end{document}
+
+
+\end{document}

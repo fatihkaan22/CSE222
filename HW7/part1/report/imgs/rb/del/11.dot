@@ -1,0 +1,9 @@
+digraph BST {
+  node [fontname="Arial", shape=circle, fixedsize=true];
+  9 [fillcolor=grey60 style=filled]
+  null7 [ label="X", style="invis"];
+  9 -> null0 [style=invis];
+  9 -> null4 [style=invis];
+  null4 [ label="X", style="invis"];
+  null0 [ label="X", style="invis"];
+}

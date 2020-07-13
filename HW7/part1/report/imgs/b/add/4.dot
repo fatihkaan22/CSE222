@@ -1,0 +1,16 @@
+digraph BST {
+  node [fontname="Arial", shape=record];
+
+
+	20->8;
+	3047[ label="30| 47"];
+	20->3047;
+
+
+	/* 2039 [label="9, 20, 39", shape=oval color=grey40, fontcolor=grey40]; */
+	/* 818[label="8, 18", shape=oval ] */
+	/* 2039->818; */
+	/* 2039->30 */
+	/* 4047[label="40, 47", shape=oval] */
+	/* 2039->4047; */
+}
